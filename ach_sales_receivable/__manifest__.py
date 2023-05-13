@@ -1,0 +1,26 @@
+# -*- coding: utf-8 -*-
+{
+    'name': "Sale Receivable Report",
+    'summary': """Report to view both sales and invoices pending collection""",
+    'description': """Report to view both sales and invoices pending collection""",
+    'author': "Gt Alchemy Development",
+    'license': 'LGPL-3',
+    'support': 'developmentalchemygx@gmail.com',
+    'category': 'Sales',
+    'version': '1.1',
+    'price': 12.00,
+    'currency': 'USD',
+    'depends': ['base',
+                'sale',
+                'account',
+                'sale_management',
+                'ach_payment_sale'],
+    'data': [
+        'security/ir.model.access.csv',
+        'reports/report_receivable_action.xml',
+        'reports/report_receivable.xml',
+        'views/sale_receivable_views.xml',
+        'views/sale_order_views.xml',
+    ],
+    'images': ['static/description/banner.png'],
+}

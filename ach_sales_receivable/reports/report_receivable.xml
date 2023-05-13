@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="receivable_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <h2 class="text-center">
+                            Sales Receivable
+                        </h2>
+                        <h4 class="text-center">
+                            Shop: <span t-esc="o.company_id.name"/>, Date: <span t-esc="o.date"/>
+                        </h4>
+                        <div class="row">
+                            <table class="table table-sm table-bordered">
+                                <t t-set="receivable" t-value="o.sale_receivable()"/>
+                                <thead>
+                                    <tr style="background-color: gray;">
+                                        <th style="font-size: 80%; color: black; vertical-align:middle; text-align:center"><strong>Sale</strong></th>
+                                        <th style="font-size: 80%; color: black; vertical-align:middle; text-align:center"><strong>Sale Amount</strong></th>
+                                        <th style="font-size: 80%; color: black; vertical-align:middle; text-align:center"><strong>Invoice</strong></th>
+                                        <th style="font-size: 80%; color: black; vertical-align:middle; text-align:center"><strong>Invoice Amount</strong></th>
+                                        <th style="font-size: 80%; color: black; vertical-align:middle; text-align:center"><strong>Residual</strong></th>
+                                        <th style="font-size: 80%; color: black; vertical-align:middle; text-align:center"><strong>Invoice Status</strong></th>
+                                        <th style="font-size: 80%; color: black; vertical-align:middle; text-align:center"><strong>Seller</strong></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="count" t-value="0"/>
+                                    <tr t-foreach="receivable" t-as="line">
+                                        <t t-set="count" t-value="count+1"/>
+                                        <td style="text-align:center;background-color:white">
+                                            <span t-esc="line['sale']"/>
+                                        </td>
+                                        <td style="text-align:center;background-color:white">
+                                            <span t-esc="line['sale_amount']"/>
+                                        </td>
+                                        <td style="text-align:center;background-color:white">
+                                            <span t-esc="line['invoice']"/>
+                                        </td>
+                                        <td style="text-align:center;background-color:white">
+                                            <span t-esc="line['invoice_amount']"/>
+                                        </td>
+                                        <td style="text-align:center;background-color:white">
+                                            <span t-esc="line['invoice_residual']"/>
+                                        </td>
+                                        <td style="text-align:center;background-color:white">
+                                            <span t-esc="line['invoice_status']"/>
+                                        </td>
+                                        <td style="text-align:center;background-color:white">
+                                            <span t-esc="line['seller']"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

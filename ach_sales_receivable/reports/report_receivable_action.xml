@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <data>
+
+                <record id="paper_sale_receivable" model="report.paperformat">
+                        <field name="name">Sale Receivable</field>
+                        <field name="format">Tabloid</field>
+                        <field name="orientation">Landscape</field>
+                </record>
+
+                <report
+                        id="action_pdf_sale_receivable"
+                        string="Sale Receivable"
+                        model="sale.receivable"
+                        report_type="qweb-pdf"
+                        file="ach_sales_receivable.receivable_report"
+                        name="ach_sales_receivable.receivable_report"
+                        print_report_name="'Sale Receivable: %s' % (object.date)"
+                        paperformat="ach_sales_receivable.paper_sale_receivable"
+                        />
+
+        </data>
+</odoo>
